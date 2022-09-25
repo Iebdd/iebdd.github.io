@@ -23,6 +23,8 @@ button, select {
   height: 25px;
   background-color: #eee;
   border: 1px solid;
+  border-radius: 5pxpx;
+
 }
 
 button:hover, select:hover {
