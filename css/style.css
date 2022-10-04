@@ -39,8 +39,9 @@ button:hover, select:hover {
   text-align: center;
 }
 
-#mode-text.light {
-  color:#121212;
+#Sorting {
+  text-align: left;
+  margin: 30px;
 }
 
 
@@ -48,6 +49,14 @@ button:hover, select:hover {
 
 body.dark {
   background-color:  #333333;
+}
+
+body.dark #mode-text {
+  color:#bbbbbb;
+}
+
+body.dark #Sorting {
+  color:#bbbbbb;
 }
 
 body.dark input, body.dark select, body.dark button  {
