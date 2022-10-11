@@ -16,6 +16,7 @@ body {
 h1 {
   font-size: 40px;
   text-align: center;
+  position:  relative;
 }
 
 button, select {
@@ -32,7 +33,38 @@ button:hover, select:hover {
   background-color: #bbbbbb;
 }
 
+/*ul {
+  display: flex;
+  flex-flow: wrap column;
+  max-height: 150px;
+  padding: 10px 30px;
+}*/
 
+ul {
+    -moz-column-count: 4;
+    -moz-column-gap: 40px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 40px;
+    column-count: 4;
+    column-gap: 40px;
+}
+
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  margin: 10px 0 5px 0;
+}
+
+.footer {
+  font-size: 0.6em;
+}
+
+body.dark .flex-wrapper {
+  color:#bbbbbb;
+}
 
 #mode-text {
   font-size: 0.8em;
@@ -42,6 +74,20 @@ button:hover, select:hover {
 #Sorting {
   text-align: left;
   margin: 30px;
+}
+
+/** Mobile **/
+
+body.mobile {
+  font-size: 60px;
+}
+
+body.mobile #new_spells {
+  font-size: 30px;
+}
+
+body.mobile h1 {
+  font-size: 80px;
 }
 
 
@@ -99,7 +145,7 @@ body.dark h1 {
   color: #bbbbbb;
 }
 
-body.dark #footer {
+body.dark #flex-wrapper {
   color: #bbbbbb;
 }
 
@@ -116,6 +162,8 @@ body.dark #footer {
 }
 
 /** Slider **/
+
+
 #dark-mode-switch {
   position: absolute;
   right: 0;
