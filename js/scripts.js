@@ -1,7 +1,7 @@
 $(document).ready(function(){
     localStorage.setItem('darkMode', 0);
-    set_alphabetical();
     load_data();
+    set_alphabetical();
     if(is_mobile() == true) {
         $("body").addClass('mobile');
         document.getElementById(".switch").style.display = "none";
