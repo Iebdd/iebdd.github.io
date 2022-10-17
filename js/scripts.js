@@ -4,7 +4,6 @@ $(document).ready(function(){
     set_alphabetical();                 /* Set the list to alpahebtical by default */
     if(is_mobile() == true) {           /* Load mobile css if the device is in portrait mode */
         $("body").addClass('mobile');
-        $("ul").addClass('mobile');
     }  
 });
 
