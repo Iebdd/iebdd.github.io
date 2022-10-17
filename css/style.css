@@ -20,25 +20,30 @@ h1 {
 }
 
 button, select {
-  cursor: pointer;
-  height: 25px;
-  background-color: #eee;
-  border: 1px solid;
-  border-radius: 5pxpx;
-
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid #000000;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:#333333;
+  text-align:center;
+  transition: all 0.2s;
 }
 
 button:hover, select:hover {
-  cursor: pointer;
-  background-color: #bbbbbb;
+  color:#000000;
+  background-color:#FFFFFF;
 }
-
-/*ul {
-  display: flex;
-  flex-flow: wrap column;
-  max-height: 150px;
-  padding: 10px 30px;
-}*/
+@media all and (max-width:30em){
+  button, select{
+    display:block;
+    margin:0.4em auto;
+  }
+} 
 
 ul {
     -moz-column-count: 4;
@@ -62,9 +67,6 @@ ul {
   font-size: 0.6em;
 }
 
-body.dark .flex-wrapper {
-  color:#bbbbbb;
-}
 
 #mode-text {
   font-size: 0.8em;
@@ -79,17 +81,35 @@ body.dark .flex-wrapper {
 /** Mobile **/
 
 body.mobile {
-  font-size: 60px;
+  font-size: 30px;
 }
 
 body.mobile #new_spells {
-  font-size: 30px;
+  font-size: 100px;
 }
 
 body.mobile h1 {
   font-size: 80px;
 }
 
+body.mobile ul {
+    -moz-column-count: 1;
+    -moz-column-gap: 30px;
+    -webkit-column-count: 1;
+    -webkit-column-gap: 30px;
+    column-count: 1;
+    column-gap: 30px;
+}
+
+body.mobile button, body.mobile select {
+  width: fit-content;
+  font-size: 25px;
+}
+
+body.mobile #dark-mode-switch {
+  top: 10%;
+  width: 0;
+}
 
 /** Dark Mode **/
 
@@ -149,6 +169,10 @@ body.dark #flex-wrapper {
   color: #bbbbbb;
 }
 
+body.dark #New_Spells {
+  color: #bbbbbb;
+}
+
 /** Dark Mode **/
 
 #footer {
@@ -164,10 +188,12 @@ body.dark #flex-wrapper {
 /** Slider **/
 
 
+
+
 #dark-mode-switch {
   position: absolute;
   right: 0;
-  top: 25px;
+  top: 50px;
   width: 100px;
 }
 .switch {
