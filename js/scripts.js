@@ -51,6 +51,8 @@ function build_menu(array, string, components) {
     for (let i = 0; i < array.length; i++) {
         string += components[0] + array[i] + components[1] + array[i] + components[2];
     }
+    console.log('String:\n' + string);
+    console.log('Array:\n' + array);
     return string;
  }
 
@@ -60,15 +62,18 @@ function set_spell_level() {
     }
     else {
         var components = ['<option value="', '">', '</option>', '" disabled style="font-weight:bold;color:black',' Level:'];
-        var ordinal = ['<sup>st</sup>', '<sup>nd</sup>', '<sup>rd</sup>', '<sup>th</sup>'];
+        var ordinal = ['<sup>st</sup>', '<sup>nd</sup>', '<sup>rd</sup>', '<sup>th</sup>', '<sup>th</sup>', '<sup>th</sup>', '<sup>th</sup>', '<sup>th</sup>', '<sup>th</sup>'];
         var list = '';
         var spells = localStorage.getItem('spells').split(',');
         var level = localStorage.getItem('spell_level').split(',');
         var length = spells.length;
         var cur_level = 1;
+        console.log('Doing things! Number 0');
         list += components[0] + 'Cantrips:' + components[3] + components[1] + 'Cantrips:' + components[2];      /* Append Cantrip menu */
+        console.log(list);
         list += build_menu(spells.filter((element, index) => {return level[index] == 0}), list, components);    /*  and Cantrip spells */
         for (let i = 1; i < 10; i++) {
+            console.log('Doing things! Number:' + i);
             list += components[0] + i + ordinal[i] + components[4] + components[1] + i + ordinal[i] + components[4] + components[2];    /* First add the disabled menu point */
             list += build_menu(spells.filter((element, index) => {return level[index] == i}), list, components);                        /* then the spells within them       */
         spells[i].replace(/'/, "\\'");
