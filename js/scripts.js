@@ -22,14 +22,15 @@ function is_mobile() {
 function load_data() {
     $.ajax('js/data.json', {            /* Load data from data.json file on load */
         dataType: 'json',
-        timeout: 500,
+        timeout: 2000,
         success: function (data, status, xhr) {
             localStorage.setItem('variations', JSON.stringify(data.data.variations));   /* Stringify JSON dict before storage as it cannot be loaded correctly otherwise */
             localStorage.setItem('spells', data.data.spells);
             localStorage.setItem('spell_level', data.data.spell_level);
         },
         error: function (jqXhr, textStatus, errorMessage) {
-            $('#Sorting').append('Error: ' + errorMessage);
+            console.log('Error:' + errorMessage + ' in load_data');
+            window.location.reload();
         }
     }); 
 }

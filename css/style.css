@@ -108,6 +108,7 @@ body.mobile button, body.mobile select {
 
 body.mobile #dark-mode-switch {
   top: 10%;
+  right: 0;
   width: 0;
 }
 
@@ -170,6 +171,10 @@ body.dark #flex-wrapper {
 }
 
 body.dark #New_Spells {
+  color: #bbbbbb;
+}
+
+body.dark #footer {
   color: #bbbbbb;
 }
 
