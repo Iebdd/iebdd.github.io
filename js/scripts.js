@@ -74,7 +74,7 @@ function set_spell_level() {
         list = components[0] + 'Cantrips:' + components[3] + components[1] + 'Cantrips:' + components[2];      /* Append Cantrip menu */
         list += build_menu(spells.filter((element, index) => {return level[index] == 0}), components);    /*  and Cantrip spells */
         for (let x = 1; x < 10; x++) {
-            list += components[0] + x + ordinal[x] + components[4] + components[3] + components[1] + x + ordinal[x] + components[4] + components[2];    /* First add the disabled menu point */
+            list += components[0] + x + ordinal[x - 1] + components[4] + components[3] + components[1] + x + ordinal[x - 1] + components[4] + components[2];    /* First add the disabled menu point */
             list += build_menu(spells.filter((element, index) => {return level[index] == x}), components);                        /* then the spells within them       */
             spells[x].replace(/'/, "\\'");
         }
