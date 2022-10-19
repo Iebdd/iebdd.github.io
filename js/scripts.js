@@ -36,8 +36,11 @@ function load_data() {
 
 function set_alphabetical() {
     var string = ['<option value="', '">', '</option>'];
-    data = localStorage.getItem('spells');
-    data = data.split(',');
+    data = localStorage.getItem('spells').split(',');
+    level = localStorage.getItem('spell_level').split(',');
+    for (var i = 0; i < level.length; i++) {
+        console.log('Spell:' + data[i] + '\nLevel:' + level[i]);
+    }
     var list = '';
     for (let i = 0; i < data.length; i++) {
         data[i].replace(/'/, "\\'");            /* Sanitise strings before formatting to option menu */
@@ -47,12 +50,12 @@ function set_alphabetical() {
     localStorage.setItem('Sorting', 1);
 }
 
-function build_menu(array, string, components) {
+function build_menu(array, components) {
+    var string = '';
     for (let i = 0; i < array.length; i++) {
+        console.log(string);
         string += components[0] + array[i] + components[1] + array[i] + components[2];
     }
-    console.log('String:\n' + string);
-    console.log('Array:\n' + array);
     return string;
  }
 
@@ -68,15 +71,12 @@ function set_spell_level() {
         var level = localStorage.getItem('spell_level').split(',');
         var length = spells.length;
         var cur_level = 1;
-        console.log('Doing things! Number 0');
-        list += components[0] + 'Cantrips:' + components[3] + components[1] + 'Cantrips:' + components[2];      /* Append Cantrip menu */
-        console.log(list);
-        list += build_menu(spells.filter((element, index) => {return level[index] == 0}), list, components);    /*  and Cantrip spells */
-        for (let i = 1; i < 10; i++) {
-            console.log('Doing things! Number:' + i);
-            list += components[0] + i + ordinal[i] + components[4] + components[1] + i + ordinal[i] + components[4] + components[2];    /* First add the disabled menu point */
-            list += build_menu(spells.filter((element, index) => {return level[index] == i}), list, components);                        /* then the spells within them       */
-        spells[i].replace(/'/, "\\'");
+        list = components[0] + 'Cantrips:' + components[3] + components[1] + 'Cantrips:' + components[2];      /* Append Cantrip menu */
+        list += build_menu(spells.filter((element, index) => {return level[index] == 0}), components);    /*  and Cantrip spells */
+        for (let x = 1; x < 10; x++) {
+            list += components[0] + x + ordinal[x] + components[4] + components[3] + components[1] + x + ordinal[x] + components[4] + components[2];    /* First add the disabled menu point */
+            list += build_menu(spells.filter((element, index) => {return level[index] == x}), components);                        /* then the spells within them       */
+            spells[x].replace(/'/, "\\'");
         }
         $("#Spell").html(list);         /* Push list to html object */
         localStorage.setItem('Sorting', 0);
