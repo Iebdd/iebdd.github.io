@@ -1,0 +1,51 @@
+{
+	"data":{
+			"confidants":{
+				"chariot":[
+					[], 
+					[	["I'm counting on you.", "You seem pretty excited.", "...Help with what?"], 
+						["What about them?", "And then you punched him?"], 
+						["Do you want to go back?", "Do you regret it?"], 
+						["You're already fast enough.", "Are your legs okay?", "It's never too late, man."]], 
+					[	["Let's not fight.", "Want to train with us?", "It's nice to meet you."], 
+						["Calm down, Ryuji.", "Just endure it.", "I'll shut them up."], 
+						["I can't exactly blame you.", "Violence is not the answer.", "Yeah, that'd be best."]], 
+					[	["Nakaoka?", "Are you worried about him?", "Just leave him be."], 
+						["But you're doing great.", "It's not so bad.", "I know how you feel."]], 
+					[	["A towel?", "Protein powder?"], 
+						["You seem conflicted.", "Do you want to rejoin?", "You're done with them, right?"], 
+						["So he's short?", "So he's an asshole?"], 
+						["Don't worry. I gotcha.", "I haven't agreed to anything.", "Fine, but you're buying ramen"]], 
+					[	["Let's stay here.", "How about Protein Lovers?", "We can train at my place."], 
+						["You guys should trust Nakaoka.", "This is no time for arguing."], 
+						["Absolutely.", "More or less.", "Not in the slightest."], 
+						["I don't get it.", "Can you explain that?"], 
+						["...Huh?", "I really don't understand."], 
+						["Sounds like you two were close.", "Just like you.", "So he should've punched back?"]], 
+					[	["Should we change his heart?", "Let's talk Takeishi."], 
+						["I think it's cool, Ryuji.", "Wait what?"], 
+						["Never know until you try.", "It's out of our hands.", "We'll use force if we have to."]], 
+					[	["What if they start fighting?", "I doubt they'll believe you."], 
+						["Things turned out for the best.", "You deserved it."], 
+						["All I did was watch.", "Are you gonna pay me back."], 
+						["But I was just standing here...", "You weren't cool though."], 
+						["You did a great job.", "So. Closed case?", "We make a good team too."]], 
+					[	["Are you satisfied now?", "Not running?"], 
+						["What did you say?", "Do you have any time for that?", "Don't do it."], 
+						["You're right.", "I never realized that."], 
+						["I agree.", "Be more specfici.", "And where is this place?"], 
+						["Congratulations.", "Got him under control, how?", "Better watch out for them."]], 
+					[	["I'm looking forward to it.", "We can't lose either."], 
+						["You're welcome.", "It's all because of you."]]],
+				"councillor": [
+					[],
+					[	["Didn't have much choice.", "We made a deal.", "I'm a little nervous."],
+						["It's in the past.", "I'm doing okay now.", "So much for privacy."],
+						["But it sounds right.", "Yep.", "Kinda creeping me out here."],
+						["So... what?", "I'll need more details.", "Uh..."],
+						["Well, okay.", "Better make it worth it.", "Why me, though?"]],
+					[	[]]
+				]
+			}
+	}
+}
