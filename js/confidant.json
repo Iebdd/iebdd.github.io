@@ -2,7 +2,6 @@
 	"data":{
 			"confidants":{
 				"chariot":[
-					[], 
 					[	["I'm counting on you.", "You seem pretty excited.", "...Help with what?"], 
 						["What about them?", "And then you punched him?"], 
 						["Do you want to go back?", "Do you regret it?"], 
@@ -38,7 +37,6 @@
 					[	["I'm looking forward to it.", "We can't lose either."], 
 						["You're welcome.", "It's all because of you."]]],
 				"councillor": [
-					[],
 					[	["Didn't have much choice.", "We made a deal.", "I'm a little nervous."],
 						["It's in the past.", "I'm doing okay now.", "So much for privacy."],
 						["But it sounds right.", "Yep.", "Kinda creeping me out here."],
@@ -83,8 +81,7 @@
 						["She's a girlfriend of yours?", "Who's Rumi?", "Should I leave you two to talk?"],
 						["He's a good friend.", "Learn some independence.", "You'll get the tab next time."]],
 					[	["Yeah.", "Kind of."],
-						["Kind of sad…", "Is our deal over?", "Well… take care of yourself."]],
-					[]],
+						["Kind of sad…", "Is our deal over?", "Well… take care of yourself."]]],
 				"death": [
 					[	["Fine by me.", "Please go easy on me.", "So many pretty lights…"]],
 					[ ["I have a bad heart.", "We’re on a date.", "I know my rights."],
@@ -248,7 +245,6 @@
 						["If you want.", "Probably not.", "It’s hard work, you know."],
 						["I’m glad too.", "Don’t deny yourself.", "Just my teammate?"]]],
 				"faith": [
-					[],
 					[	["We're just getting started.", "Go easy on me.", "I'm so done with this."],
 						["Next time, then.", "You doing okay?", "Lucky for me…"],
 						["I see.", "So now…?"],
@@ -414,7 +410,6 @@
 						["I couldn’t leave him.", "It was for the special menu."],
 						["It’s a coincidence.", "Should we close up?", "What if you’re right?"]]],
 				"hermit": [
-					[],
 					[	["That wouldn’t solve anything.", "That’s a great idea."],
 						["If we work together.", "Want me to help?", "I don’t know."],
 						["Sounds good to me.", "Can you tell me again?"],
@@ -487,7 +482,6 @@
 					[	["For what?", "You guys are religious?", "I’m not interested."],
 						["Good for you.", "Thank you."]]],
 				"justice": [
-					[],
 					[	["You always seem so busy.", "Do you have no friends?"],
 						["Is that your win?", "Not bad."],
 						["Shoot very carefully.", "I'll go for a power shot."],
@@ -535,7 +529,6 @@
 						["Same here.", "Really hate losing, don't you."],
 						["I accept.", "Let me think about it."]]],
 				"lovers": [
-					[],
 					[	["Are you feeling better now?", "She’s so strong.", "So are you friends again?"],
 						["You can’t blame yourself.", "You might be right.", "Kamoshida had the upper hand."],
 						["It was no big deal.", "I couldn’t just ignore you."],
@@ -591,7 +584,6 @@
 						["Of course.", "I should be asking you that."],
 						["Couples?", "Just Once?"]]],
 				"moon": [
-					[],
 					[	["I don’t understand.", "…Phan-Site?"],
 						["You’ve done good, kid.", "That sounds pretty tough.", "Is this really necessary?"],
 						["Uh, strategic… what?", "Sounds cool.", "You’re really hyped for this."],
@@ -834,7 +826,6 @@
 			"stats": {
 				"chariot": 
 				[
-					[],
 					[	[3, 2, 3], [0, 0], [2, 2], [2, 2, 2]],
 					[	[2, 0, 0], [3, 2, 0], [2, 0, 0]],
 					[	[0, 2, 0], [3, 2, 3]],
@@ -846,16 +837,14 @@
 					[	[3, 3], [0, 0]]],
 				"councillor": 
 				[
-					[],
-					[	[0, 2, 2], [0, 0, 0,], [3, 2, 0], [0, 0, 0], [2, 0, 0]],
+					[	[0, 2, 2], [0, 0, 0], [3, 2, 0], [0, 0, 0], [2, 0, 0]],
 					[	[2, 0, 2], [2, 2, 0], [0, 0, 0], [2, 0, 2], [2, 2], [2, 0, 0]],
 					[ [0, 0], [3, 0, 2], [2, 0, 3], [0, 0], [2, 2], [3, 0, 0], [2, 2, 0]],
 					[	[3, 0, 2], [0, 0, 0], [0, 2, 3], [2, 2, 0], [0, 2, 0], [2, 0, 2]],
 					[	[0, 2, 2], [3, 2, 0], [0, 0], [0, 0, 2], [0, 0], [0, 0, 0], [2, 2, 0]],
 					[	[3, 3, 3], [3, 3, 3], [3, 3], [3, 3, 3]],
 					[	[2, 3, 0], [3, 2, 2], [3, 0, 2], [2, 0, 3], [3, 3], [3, 3], [0, 0, 0], [2, 0, 0]],
-					[	[0, 0], [3, 2, 2]],
-					[]],
+					[	[0, 0], [3, 2, 2]]],
 				"death": 
 				[
 					[	[1, 3, 1]],
@@ -908,7 +897,6 @@
 					[	[0, 3, 3], [3, 3, 3], [0, 0, 0], [3, 3, 3]]],
 				"faith": 
 				[
-					[],
 					[	[2, 0, 2], [2, 0, 0], [0, 0], [0, 0, 0], [0, 0, 0], [2, 0, 0]],
 					[ [3, 0, 0], [2, 2, 0], [3, 2, 0], [0, 2, 0], [0, 0], [0, 0], [0, 0, 0], [3, 3, 3], [0, 0]],
 					[	[0, 2, 0], [3, 0, 2], [0, 0], [2, 2, 0], [0, 0], [2, 0], [0, 0, 0], [2, 0], [0, 2, 0], [2, 2, 0]],
@@ -946,7 +934,6 @@
 					[	[3, 3, 0], [0, 0], [0, 0, 2]]],
 				"hermit": 
 				[
-					[],
 					[	[0, 2], [3, 2, 0], [0, -1], [2, 0, 0]],
 					[	[0, 0, 3], [3, 2, 0], [0, 0, 2]],
 					[	[2, 3, 0], [0, 0], [2, 2, 3], [2, 0, 2]],
@@ -970,18 +957,15 @@
 					[	[0, 0, 0], [3, 3]]],
 				"justice": 
 				[
-					[],
 					[	[2, 0], [0, 0], [2, 2], [0, 0], [2, 2, 3], [0, 0, 2]],
 					[	[0, 0], [3, 2, 0], [0, 0], [0, 0], [0, 0, 0], [0, 2, 0]],
 					[	[0, 0], [2, 0, 3], [3, 2, 0], [2, 0], [0, 0, 0], [3, 3, 2], [0, 2, 0]],
 					[	[0, 0, 0], [2, 0], [3, 2, 0], [0, 0, 0], [2, 2, 2]],
 					[	[2, 0, 3], [0, 2], [3, 3, 2], [3, 0, 2], [2, 2], [3, 0, 2], [0, 0, 2]],
 					[ [2, 3], [0, 0], [0, 0], [2, 3], [0, 0], [0, 0, 0], [0, 0, 2]],
-					[ [0, 0], [0, 0, 0], [0, 0], [0, 0, 0], [0, 0], [3, 0, 0], [0, 3], [0, 0]],
-					[]],
+					[ [0, 0], [0, 0, 0], [0, 0], [0, 0, 0], [0, 0], [3, 0, 0], [0, 3], [0, 0]]],
 				"lovers": 
 				[
-					[],
 					[	[3, 3, 2], [2, 3, 2], [2, 3], [3, 3], [2, 2, 2]],
 					[	[0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [2, 2, 3], [0, 0, 0], [0, 0], [2, 3], [0, 2], [2, 0, 0]],
 					[	[3, 0, 2], [2, 3, 0], [3, 2, 0], [3, 2], [0, 0, 3], [2, 0, 2]],
@@ -993,7 +977,6 @@
 					[ [3, 2, 3], [2, 3, 3], [0, 0], [3, 3], [0, 0], [0, 0], [0, 0]]],
 				"moon": 
 				[
-					[],
 					[	[0, 0], [3, 0, 0], [0, 3, 2], [2, 0, 0]],
 					[	[0, 3, 2], [0, 2, 2], [2, 0, 0], [2, 2, 2]],
 					[ [3, 0, 2], [2, 0, 0], [0, 0, 0], [2, 0, 2]],
@@ -1065,9 +1048,26 @@
 					[ [0, 0, 0], [0, 0], [0, 0, 0], [0, 0]],
 					[ [0, 2, 2], [2, 0, 3], [0, 0], [3, 3]],
 					[ [3, 0, 2], [2, 3, 3], [2, 0, 0], [2, 2, 2]],
-					[ [2, 3], [0, 3, 3], [0, 0]
-				]
-			]
-		}
+					[ [2, 3], [0, 3, 3], [0, 0]]]},
+			"ranks": {
+				"chariot": [2, 3, 4, 5, 6, 7, 8, 9, "MAX"],
+				"councillor": [2, 3, 4, 5, 6, 7, 8, 9, "MAX"],
+				"death": [1, 2, 3, 4, 5, 6, 7, 7.5, 8, 9, "MAX"],
+				"devil": [1, 2, 3, 4, 5, 6, 7, 7.5, 8, 9, "MAX"],
+				"emperor": [1, 2, 3, 4, 5, 6, 7, 8, 9, "MAX"],
+				"empress": [1, 2, 3, 4, 5, 6, 7, 8, 9, "MAX"],
+				"faith": [2, 3, 4, 5, 6, 7, 8, 9, "MAX"],
+				"fortune": [1, 2, 3, 4, 5, 6, 7, 7.5, 8, 9, "MAX"],
+				"hanged": [1, 2, 3, 4, 5, 6, 7, 7.5, 8, 9, "MAX"],
+				"hermit": [2, 3, 4, 5, 6, 7, 8, 9, "MAX"],
+				"hierophant": [1, 2, 3, 4, 5, 6, 7, 8, 9, "MAX"],
+				"justice": [2, 3, 4, 5, 6, 7, 8, "MAX"],
+				"lovers": [2, 3, 4, 5, 6, 7, 8, 9, "MAX"],
+				"moon": [2, 3, 4, 5, 6, 6.5, 7, 8, 9, "MAX"],
+				"priestess": [1, 2, 3, 4, 5, 6, 7, 8, 9, "MAX"],
+				"star": [1, 2, 3, 4, 5, 6, 7, 7.5, 8, 9, "MAX"],
+				"sun": [1, 2, 3, 4, 5, 6, 7, 8, 9, "MAX"],
+				"temperance": [1, 2, 3, 4, 5, 6, 7, 8, 8.5, 9, "MAX"],
+				"tower": [1, 2, 3, 4, 5, 6, 7, 8, 9, "MAX"]}
 	}
 }
