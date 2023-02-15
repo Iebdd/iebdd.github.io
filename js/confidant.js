@@ -1,6 +1,6 @@
 $(document).ready(function(){
   isOpen = false;
-  nav_menu = false;
+  nav = false;
   load_data();
 })
 
@@ -23,44 +23,37 @@ function load_data() {
 }
 
 $(function() {
-  $("#open-button").click(function() {
+  $("#open-button").click(function() {  /* Add or remove */
     if ( isOpen ) {
       $("body").removeClass('show-menu');
     }
     else {
       $("body").addClass('show-menu');
     }
-    isOpen = !isOpen;
+    isOpen = !isOpen;                   /* Negates variable after opening/closing menu */
   });
 
-  $("#navbar").click(function() {
-    console.log(nav_menu);
-    if ( nav_menu ) {
-      let menu = '<button class="sidebar top" id="confidants">Confidants</button> <br> <button class="sidebar top" id="crosswords" disabled>Crossword</button> <br> <button class="sidebar top" id="exams" disabled>Exams</button>'
-      $("#navbar").html(menu);
-      nav_menu = false;
-      console.log("nav = false");
+  $("#confidants").click(function() {
+    var comp = ["<button class=\"sidebar ", "bot\"", "top\"", " id=\"", "\">", "</button>", " <br>"];
+    var names = localStorage.getItem('names').split(',');
+    let menu_top_arr = [];
+    let menu_bot_str = "";
+    if ( !nav ) {
+      for (let x = 0; x < 19; x++) {
+        menu_bot_str += comp[0] + comp[1] + comp[3] + names[x + 3].toLowerCase() + comp[4] + names[x + 3] + comp[5] + comp[6];
+      }
+      $("#confidants-list").addClass('overflow');
     }
     else {
-      nav_menu = true;
-      var comp = ["<button class=\"sidebar ", "bot\"", "top\"", " id=\"", "\">", "</button>", " <br>"];
-      var names = localStorage.getItem('names').split(',');
-      let menu_top_arr = [];
-      let menu_bot_str = "";
-      for (let x = 0; x < 19; x++) {
-        if (x < 4) {
-          var menu_top = comp[0] + comp[2] + comp[3] + names[x].toLowerCase() + comp[4] + names[x] + comp[5];
-          if (x < 3) {
-            menu_top += comp[6]
-          }
-        }
-        var menu_bot = comp[0] + comp[1] + comp[3] + names[x + 3].toLowerCase() + comp[4] + names[x + 3] + comp[5] + comp[6]
-        menu_top_arr.push(menu_top);
-        menu_bot_str += menu_bot;
-      }
-      let menu = menu_top_arr[0] + menu_bot_str + menu_top_arr[1] + menu_top_arr[2];
-      console.log(menu);
-      $("#navbar").html(menu);
+      $("#confidants-list").removeClass('overflow');
     }
+    $("#confidants-list").html(menu_bot_str);
+    nav = !nav;
+  })
+
+  $("#confidants-list").on("click", '.sidebar', function() {
+    var id = $(this).attr('id');
+    console.log(id);
   });
 });
+
