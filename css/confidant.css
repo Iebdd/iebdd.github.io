@@ -5,30 +5,24 @@
   --background: #282a36;
 }
 
-
-.back>ul>a,
-.nav>ul>a,
-.pulse {
-    cursor: pointer
-}
-
-body,
-li::before {
-    font-weight: 400
-}
-
 h1 {
   font-size: 40px;
   text-align: center;
   position:  relative;
 }
 
-a,
-a:hover {
-    text-decoration: none
+h2 {
+    font-size: 30px;
+    text-align: center;
+    position: relative;
+    text-transform: capitalize;
 }
 
-
+caption {
+    font-size: 20px;
+    text-align:center;
+    position: relative;
+}
 
 .overflow {
     height:60vh;
@@ -37,14 +31,38 @@ a:hover {
     overflow-y:scroll;
 }
 
+.tooltip {
+    position: relative;
+    text-align:center;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: #282a36;
+    color: #fff;
+    padding: 5px 0;
+    border-radius: 6px;
+    position:absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip:hover:after .tooltiptext {
+    opacity: 0;
+}
+
 .nav,
 .title {
     text-transform: uppercase
-}
-
-.nav>ul,
-.title {
-    text-align: center
 }
 
 .table__note,
@@ -54,36 +72,6 @@ a:hover {
 
 * {
     box-sizing: border-box
-}
-
-p {
-    margin: 10px 0
-}
-
-p:first-child {
-    margin-top: 0
-}
-
-p:last-child {
-    margin-bottom: 0
-}
-
-ul {
-    padding: 0
-}
-
-li {
-    list-style: none;
-    position: relative;
-}
-
-li::before {
-    content: "+";
-    display: block;
-    position: absolute;
-    left: -15px;
-    top: 0;
-    color: rgba(255, 255, 255, .5)
 }
 
 .back,
@@ -136,48 +124,47 @@ body {
     transition: transform .2s linear
 }
 
-.nav>ul {
-    width: 75vw;
-    display: block;
-    margin-left: 24vw
+.table__head {
+    color: rgba(255, 255, 255, .5)
 }
 
-.nav>ul>a {
-    color: #fff;
-    width: calc(100% / 10);
-    float: left;
-    padding: .5vw;
-    margin: 0;
-    transition: all .5s ease
+.table__cell {
+    padding: 5px 15px
 }
 
-.nav>ul>a:nth-child(even) {
-    background: rgba(255, 255, 255, .05)
+.table__cell--head {
+    border-bottom: 3px solid rgba(255, 255, 255, .15)
 }
 
-.nav>ul>a:active,
-.nav>ul>a:hover {
-    background: rgba(255, 255, 255, .075);
-    text-decoration: none
-}
-
-.nav>ul>a>li::before {
-    content: none
-}
 
 .text-block {
     max-width: 768px;
     margin: 30px auto
 }
 
-.table-wrapper {
-/*    width: 100%; */
-    overflow-x: auto;
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+table, th, td {
+  border: 2px solid grey;
+}
+
+table tr {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+table {
+    table-layout: fixed;
+    width: 60%;
+    margin: 30px;
 }
 
 .table {
-    min-width: 100%;
-    margin: 30px 0 0;
+    margin-left: auto;
+    margin-right: auto;
     border-collapse: collapse;
     border-spacing: 0
 }
@@ -214,12 +201,22 @@ body {
 }
 
 
+.footer {
+    width: 100%;
+}
+
+.inv {
+    opacity: 0;
+}
 
 footer {
-  position: absolute;
+  position: relative;
   text-align: center;
   font-size: 0.6em;
-  height: 20px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 25px;
   margin: 20px;
   width: 95%;
   bottom: 0;
@@ -236,29 +233,7 @@ canvas {
     -ms-user-select: none
 }
 
-.container {
-    width: 75%;
-    height: 50%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center
-}
 
-.affixes-list__item-10:hover,
-.affixes-list__item-4-7:hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22)
-}
-
-.back {
-    width: 3em;
-    display: flex;
-    margin-left: -2vw;
-    left: 50%;
-    font-weight: 700;
-    font-size: calc(1vw + 1vmin);
-    text-transform: uppercase
-}
 
 .sidebar {
     background-color: transparent;
@@ -281,26 +256,6 @@ canvas {
 .menu-button {
     position: fixed;
     font-size: 1.5em
-}
-
-.back>ul>a {
-    color: #fff;
-    width: 100%;
-    float: left
-}
-
-.back>ul>a:nth-child(even) {
-    background: rgba(255, 255, 255, .05)
-}
-
-.back>ul>a:active,
-.back>ul>a:hover {
-    background: rgba(255, 255, 255, .075);
-    text-decoration: none
-}
-
-.back>ul>a>li::before {
-    content: none
 }
 
 .menu-button {
@@ -389,7 +344,7 @@ canvas {
 }
 
 .show-menu .menu-wrap {
-    width: 280px;
+    width: 170px;
     height: auto;
     -webkit-animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
             animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
