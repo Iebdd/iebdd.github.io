@@ -1069,7 +1069,7 @@
 				"sun": [1, 2, 3, 4, 5, 6, 7, 8, 9, "MAX"],
 				"temperance": [1, 2, 3, 4, 5, 6, 7, 8, 8.5, 9, "MAX"],
 				"tower": [1, 2, 3, 4, 5, 6, 7, 8, 9, "MAX"]},
-			"names": ["Confidants", "Crosswords", "Exams", "Chariot", "Councillor", "Death", "Devil", "Emperor", "Empress", "Faith", "Fortune",
+			"names": ["Chariot", "Councillor", "Death", "Devil", "Emperor", "Empress", "Faith", "Fortune",
 							 "Hanged", "Hermit", "Hierophant", "Justice", "Lovers", "Moon", "Priestess", "Star", "Sun", "Temperance", "Tower"]
 	}
 }

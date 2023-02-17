@@ -23,7 +23,7 @@ function load_data() {
 }
 
 $(function() {
-  $("#open-button").click(function() {  /* Add or remove */
+  $("#open-button").click(function() {  /* Add or remove the class showing the menu */
     if ( isOpen ) {
       $("body").removeClass('show-menu');
     }
@@ -34,26 +34,31 @@ $(function() {
   });
 
   $("#confidants").click(function() {
-    var comp = ["<button class=\"sidebar ", "bot\"", "top\"", " id=\"", "\">", "</button>", " <br>"];
-    var names = localStorage.getItem('names').split(',');
+    var comp = ["<button class=\"sidebar ", "bot\"", "top\"", " id=\"", "\">", "</button>", " <br>"]; /* Array menu components */
+    var names = localStorage.getItem('names').split(',');                                             /* Load the relevant names */
     let menu_top_arr = [];
     let menu_bot_str = "";
-    if ( !nav ) {
-      for (let x = 0; x < 19; x++) {
-        menu_bot_str += comp[0] + comp[1] + comp[3] + names[x + 3].toLowerCase() + comp[4] + names[x + 3] + comp[5] + comp[6];
+    if ( !nav ) {                                               /* Only fill the string if the global nav variable is false */
+      for (let x = 0; x < 19; x++) {                            /* Use names list to construct a total of 19 buttons */
+        menu_bot_str += comp[0] + comp[1] + comp[3] + names[x].toLowerCase() + comp[4] + names[x] + comp[5] + comp[6];
       }
-      $("#confidants-list").addClass('overflow');
+      $("#confidants-list").addClass('overflow');               /* Append the overflow class list to expand the nav */
     }
     else {
       $("#confidants-list").removeClass('overflow');
     }
-    $("#confidants-list").html(menu_bot_str);
-    nav = !nav;
+    $("#confidants-list").html(menu_bot_str);                   /* Depending on nav, fill the confidants-list div with */
+    nav = !nav;                                                           /* an empty string or the submenu */
   })
 
-  $("#confidants-list").on("click", '.sidebar', function() {
-    var id = $(this).attr('id');
-    console.log(id);
+  $("#confidants-list").on("click", '.sidebar', function() {    /* On click listener for the confidants-list div */
+    var id = $(this).attr('id');                                /* Get id of the button to figure out which one was pressed */
+    var text = JSON.parse(localStorage.getItem('data'))[id];    /* Load the relevant items from storage based on the id */
+    var stats = JSON.parse(localStorage.getItem('stats'))[id];
+    var ranks = JSON.parse(localStorage.getItem('ranks'))[id];
+    console.log(text[0]);
+    console.log(stats[0]);
+    console.log(ranks[0]);
   });
 });
 
