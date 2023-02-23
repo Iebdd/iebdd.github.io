@@ -68,11 +68,9 @@ $(function() {
 
   $("#crosswords").click(function() {
     if ( window.sessionStorage.getItem('crossword') ) {         /* Only construct the table anew if it has not been saved this session */
-      console.log('Pulling from storage');
       $('#table-wrapper').html(window.sessionStorage.getItem('crossword'));
       return;
     }
-    console.log('Creating table');
     var cells = JSON.parse(window.localStorage.getItem('cells_en'));
     var quests = window.localStorage.getItem('quest_en').split(',');
     var cells_str = "<h2>Crossword Puzzles</h2>";
@@ -100,7 +98,6 @@ $(function() {
     }
     var text = JSON.parse(window.localStorage.getItem('data'))[id];    /* Load the relevant items from storage based on the id */
     var stats = JSON.parse(window.localStorage.getItem('stats'))[id];
-    console.log(stats);
     var ranks = JSON.parse(window.localStorage.getItem('ranks'))[id];
     var requirements = JSON.parse(window.localStorage.getItem('requirements'))[id];      /* Components for constructing the table */
     var max = 0;
@@ -114,7 +111,6 @@ $(function() {
         table_str += ` class="tooltip">Rank ${ranks[table]}<sup>*</sup><span class="tooltiptext">Requires ${requirements[table]}</span></caption>`;
       }
       for (var column = 0; column < text[table].length; column++) {    /* Iterate through all of the different prompts per rank per confidant */
-      console.log(`Table: ${table}/ Column: ${column}`);
         max = Math.max( ...stats[table][column]);
         if (column === text[table].length - 1) {
           table_str += `<tr><th>Followup</th>`;                /* Add the table head which can be Response + (column + 1) or Followup for the last one */
@@ -127,7 +123,7 @@ $(function() {
           if (max === stats[table][column][row] && max != 0) {
             table_str += ` <span style="color: red">+${stats[table][column][row]}</span></td>`; /* Colour confidant gain red if it is the highest */
           }                                                                                     /* possible one for this response as well as not 0 */
-          else {
+          else if (stats[table][column][row] != -1){
             table_str += ` +${stats[table][column][row]}`;
           }
         }
