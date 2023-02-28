@@ -28,10 +28,10 @@ function load_data() {
 function fill_cell(cell) {
   let cell_str = '';
   if (  cell in window) {                 /* 'x in window' returns true if x is undefined and false if it is not */
-    cell_str = `<td>&nbsp</td>`;
+    cell_str = `<td class="cross_cell">&nbsp</td>`;
   }
   else {
-    cell_str = `<td>${cell}</td>`;
+    cell_str = `<td class="cross_cell">${cell}</td>`;
   }
   return cell_str;
 }
@@ -71,17 +71,17 @@ $(function() {
       $('#table-wrapper').html(window.sessionStorage.getItem('crossword'));
       return;
     }
-    var cells = JSON.parse(window.localStorage.getItem('cells_en'));
-    var quests = window.localStorage.getItem('quest_en').split(',');
+    var cells = JSON.parse(window.localStorage.getItem('cells_en'));   /* Get the value of all crossword cells */
+    var quests = window.localStorage.getItem('quest_en').split(',');   /* Get the value of all crossword hints */
     var cells_str = "<h2>Crossword Puzzles</h2>";
-    for (var table = 0; table < cells.length; table++) {
+    for (var table = 0; table < cells.length; table++) {               /* Construct as many tables as the cells array has elements */
       cells_str += `<table class="table"><caption>Q${table + 1}: ${quests[table]}</caption><tr>`;
-      for (var cell = 1; cell < 101; cell++) {
+      for (var cell = 1; cell < 101; cell++) {                         /* Iterate through all 100 cells of a table per table */
         do {
-          cells_str += fill_cell(cells[table][cell]);
-          cell++;
-        } while ((cell % 10) != 0)
-        cells_str += `${fill_cell(cells[table][cell])}</tr>`;
+          cells_str += fill_cell(cells[table][cell]);                  /* Fill the cell if that cell number has content */
+          cell++;                                                       /* or add a non-breaking space if it does not */
+        } while ((cell % 10) != 0)                                     /* Break the 2nd iterating loop if the elements */
+        cells_str += `${fill_cell(cells[table][cell])}</tr>`;           /* reach a number divisible by 10 (10/20 etc.) */
       }
       cells_str += '</table>';
     }
@@ -103,7 +103,7 @@ $(function() {
     var max = 0;
     var table_str = `<h2>${id}</h2>`;                           /* String to be written to with added preamble*/ 
     for (var table = 0; table < text.length; table++) {        /* Iterate through all of the available Ranks for a specific confidant */
-      table_str += '<table class="table"><caption';
+      table_str += '<table class="table con"><caption';
       if (requirements[table] === 0) {                          /* Append requirements in a tooltip if there are any */
         table_str += `>Rank ${ranks[table]}</caption>`;
       }
