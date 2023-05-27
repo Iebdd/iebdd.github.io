@@ -5,28 +5,73 @@
   --background: #282a36;
 }
 
+@font-face {
+    font-family: "P5Font";
+    src: url("../css/p5hatty.ttf") format("truetype");
+}
+
+.main-text {
+    font-family: "P5Font";
+    font-size: 2vw;
+    word-wrap: normal;
+}
+
+p {
+    margin: 0;
+}
+
+
 h1 {
-  font-size: 40px;
+  font-size: 4vw;
   text-align: center;
   position:  relative;
 }
 
+h1:hover {
+    cursor: pointer;
+}
+
 h2 {
-    font-size: 30px;
+    font-size: 3vw;
     text-align: center;
     position: relative;
     text-transform: capitalize;
 }
 
 caption {
-    font-size: 20px;
+    font-size: 2vw;
     text-align:center;
     position: relative;
 }
 
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 0;
+    gap: 10vw 5vh;
+    margin: 0;
+    list-style: none;
+}
+
+
+
+.flex-item {
+    background: transparent;
+    width: 5vw;
+    height: 5vh;
+    margin-top: 10px;
+    color: #bbb;
+    text-align: center;
+}
+
+.flex-item:hover {
+    cursor: pointer;
+}
+
 .overflow {
     max-height:60vh;
-    width: 10em;
+    width: 8vw;
     overflow:hidden;
     overflow-y:scroll;
 }
@@ -34,6 +79,12 @@ caption {
 .tooltip {
     position: relative;
     text-align:center;
+}
+
+svg {
+    fill: #000;
+    width: 5vw;
+    height: 20vh;
 }
 
 .tooltip span {
@@ -80,6 +131,12 @@ body {
     -o-font-feature-settings: "kern";
     -webkit-font-feature-settings: "kern";
     font-feature-settings: "kern"
+}
+
+#table-wrapper {
+    width: 70vw;
+    min-height: 80vh;
+    margin: 0 auto;
 }
 
 .main {
@@ -160,10 +217,6 @@ table {
     width: 100%;
 }
 
-.inv {
-    opacity: 0;
-}
-
 footer {
   position: relative;
   text-align: center;
@@ -187,8 +240,6 @@ canvas {
     -webkit-user-select: none;
     -ms-user-select: none
 }
-
-
 
 .sidebar {
     background-color: transparent;
@@ -275,6 +326,19 @@ canvas {
         width: 6vw;
         height: 3vh;
     }
+
+    svg {
+        width: 10vw;
+        height: 10vh;
+    }
+
+    .main-text {
+        font-size: 3vw;
+    }
+
+    #table-wrapper {
+        min-height: 100vh;
+}
 }
 
 .nav {
