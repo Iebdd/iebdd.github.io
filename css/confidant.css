@@ -316,6 +316,7 @@ canvas {
 @media screen and (max-aspect-ratio: 1.9) {
     .menu-button {
         width: 4vh;
+        font-size: 5em;
     }
     .menu-wrap {
         bottom: 10vh;
@@ -347,6 +348,18 @@ canvas {
 
     .flex-container {
         gap: 18vh 12vw;
+    }
+
+    .bot {
+        font-size: 1.5em;
+    }
+
+    .top {
+        font-size: 1.7em;
+    }
+
+    .overflow {
+        width: 10vw;
     }
 }
 
