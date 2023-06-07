@@ -1,3 +1,10 @@
+/*
+Aspect Ratios:
+Iphone 12: 2560 x 1170 = 2.164
+WQHD: 2560 x 1440 = 1.7777
+MacBook Pro: 2880 x 1800 = 1.6
+*/
+
 :root {
   --green: #50fa7b;
   --yellow: #ffb86c;
@@ -313,7 +320,7 @@ canvas {
 
 
 
-@media screen and (max-aspect-ratio: 1.9) {
+@media screen and (max-aspect-ratio: 1.5) {
     .menu-button {
         width: 4vh;
         font-size: 5em;
