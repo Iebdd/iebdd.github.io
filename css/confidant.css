@@ -25,6 +25,9 @@ h1 {
   font-size: 4vw;
   text-align: center;
   position:  relative;
+  margin-left: 20vw;
+  margin-right: 20vw;
+  margin-top: 0;
 }
 
 h1:hover {
