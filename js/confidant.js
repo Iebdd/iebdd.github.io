@@ -6,7 +6,6 @@ $(document).ready(function(){
     window.localStorage.setItem('lang', 0);
   }
   load_data();
-  (window.location.hash) ? read_fragment(window.location.hash.substring(1).toLowerCase()) : fill_main();
 })
 
 
@@ -42,6 +41,7 @@ function load_data() {
       if (window.localStorage.getItem('exams') != JSON.stringify(data.exams)) {
         window.localStorage.setItem('exams', JSON.stringify(data.exams));
       }
+      (window.location.hash) ? read_fragment(window.location.hash.substring(1).toLowerCase(), data.names) : fill_main();
     },
     error: function (jqXhr, textStatus, errorMessage) {
       console.log('Error:' + errorMessage + ' in load_data');
@@ -50,8 +50,7 @@ function load_data() {
   });
 }
 
-function read_fragment(fragment) {
-  var names = JSON.parse(window.localStorage.getItem('names'));
+function read_fragment(fragment, names) {
   for (let x = 1; x <= langs.length; x++) {
     if (names[x - 1].includes(fragment)) {
       push_confidant(fragment);
