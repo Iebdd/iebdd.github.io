@@ -1,10 +1,12 @@
 $(document).ready(function(){
   isOpen = false;
   nav = false;
+  langs = ['en'];
   if (window.localStorage.getItem('lang') === null) {
     window.localStorage.setItem('lang', 0);
   }
   load_data();
+  (window.location.hash) ? read_fragment(window.location.hash.substring(1).toLowerCase()) : fill_main();
 })
 
 
@@ -40,7 +42,6 @@ function load_data() {
       if (window.localStorage.getItem('exams') != JSON.stringify(data.exams)) {
         window.localStorage.setItem('exams', JSON.stringify(data.exams));
       }
-      fill_main();
     },
     error: function (jqXhr, textStatus, errorMessage) {
       console.log('Error:' + errorMessage + ' in load_data');
@@ -49,9 +50,26 @@ function load_data() {
   });
 }
 
+function read_fragment(fragment) {
+  var names = JSON.parse(window.localStorage.getItem('names'));
+  for (let x = 1; x <= langs.length; x++) {
+    if (names[x - 1].includes(fragment)) {
+      push_confidant(fragment);
+      return;
+    }
+  }
+  console.log(fragment);
+  switch(fragment) {
+    case 'crosswords': push_crosswords(); break;
+    case 'exams': push_exams(); break;
+    default: fill_main(); break;
+  }
+}
+
 function fill_main() {
     if ( window.sessionStorage.getItem('main') ) {                  /* Only construct the table anew if it has not been saved this session */
       $('#table-wrapper').html(window.sessionStorage.getItem('main'));
+      window.location.hash = '';
       return;
     }
   var names = JSON.parse(window.localStorage.getItem('names'));
@@ -62,12 +80,13 @@ function fill_main() {
   var img = JSON.parse(window.localStorage.getItem('images'));
   var flex_str = `<ul class="flex-container" id="main-list">`;
   for (let x = 0; x < names.length; x++) {
-    flex_str += `<li class="flex-item" id="${names[x]}"><p class="main-text">${capitalise(names[x])}<p/>${img[names[x]]}</li>`;
+    flex_str += `<li class="flex-item" id="${names[x]}"><p class="main-text">${names[x]}<p/>${img[names[x]]}</li>`;
     if (x === 0) {
     }
   }
   flex_str += `</ul>`;
   $('#table-wrapper').html(flex_str);
+  window.location.hash = '';
   window.sessionStorage.setItem('main', flex_str);
   return;
 }
@@ -77,14 +96,11 @@ function get_cell(cell) {
   return (cell === undefined) ? `<td class="cross_cell">&nbsp</td>` : `<td class="cross_cell">${cell}</td>`;
 }
 
-function capitalise(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 function push_confidant(id) {
     let lang = window.localStorage.getItem('lang');
     if ( window.sessionStorage.getItem(id) ) {                  /* Only construct the table anew if it has not been saved this session */
       $('#table-wrapper').html(window.sessionStorage.getItem(id));
+      window.location.hash = id;
       return;
     }
     var text = JSON.parse(window.localStorage.getItem('data'))[lang][0][id];    /* Load the relevant items from storage based on the id */
@@ -123,6 +139,7 @@ function push_confidant(id) {
       table_str += `</table>`;
     }
     $('#table-wrapper').html(table_str);
+    window.location.hash = id;
     window.sessionStorage.setItem(id, table_str);
 }
 
@@ -141,6 +158,26 @@ function collapse_overflow() {
   return;
 }
 
+function push_crosswords() {
+  let lang = window.localStorage.getItem('lang');
+  var cells = JSON.parse(window.localStorage.getItem('cells'))[lang];   /* Get the value of all crossword cells */
+  var quests = JSON.parse(window.localStorage.getItem('quest'))[lang];   /* Get the value of all crossword hints */
+  var cells_str = "<h2>Crossword Puzzles</h2>";
+  for (var table = 0; table < cells.length; table++) {               /* Construct as many tables as the cells array has elements */
+    cells_str += `<table class="table"><caption>Q${table + 1}: ${quests[table]}</caption><tr>`;
+    for (var cell = 1; cell < 101; cell++) {                         /* Iterate through all 100 cells of a table per table */
+      do {
+        cells_str += get_cell(cells[table][cell]);                  /* Fill the cell if that cell number has content */
+        cell++;                                                       /* or add a non-breaking space if it does not */
+      } while ((cell % 10) != 0)                                     /* Break the 2nd iterating loop if the elements */
+      cells_str += `${get_cell(cells[table][cell])}</tr>`;           /* reach a number divisible by 10 (10/20 etc.) */
+    }
+    cells_str += '</table>';
+  }
+  $('#table-wrapper').html(cells_str);
+  window.location.hash = 'crosswords';
+  window.sessionStorage.setItem('crossword', cells_str);
+}
 
 function push_exams() {
   let lang = window.localStorage.getItem('lang');
@@ -176,7 +213,9 @@ function push_exams() {
       exam_str += `</tr></tbody>`;
     }
   }
+  console.log('Exams!');
   $('#table-wrapper').html(exam_str);
+  window.location.hash = 'exams';
   window.sessionStorage.setItem('questions', exam_str);
 }
 
@@ -200,7 +239,7 @@ $(function() {
     let menu_bot_str = "";
     if ( !nav ) {                                               /* Only fill the string if the global nav variable is false */
       for (let x = 0; x < 19; x++) {                            /* Use names list to construct a total of 19 buttons */
-        menu_bot_str += `<button class="sidebar bot" id="${names[x]}">${capitalise(names[x])}</button> <br>`;
+        menu_bot_str += `<button class="sidebar bot" id="${names[x]}">${names[x]}</button> <br>`;
       }
       $("#confidants-list").addClass('overflow');               /* Append the overflow class list to expand the nav */
     }
@@ -215,6 +254,7 @@ $(function() {
     collapse_overflow();
     if ( window.sessionStorage.getItem('questions') ) {         /* Only construct the table anew if it has not been saved this session */
       $('#table-wrapper').html(window.sessionStorage.getItem('questions'));
+      window.location.hash = 'exams';
       return;
     }
     push_exams();
@@ -222,27 +262,12 @@ $(function() {
 
   $("#crosswords").click(function() {                           /* Change main view to crosswords */
     collapse_overflow();
-    let lang = window.localStorage.getItem('lang');
     if ( window.sessionStorage.getItem('crossword') ) {         /* Only construct the table anew if it has not been saved this session */
       $('#table-wrapper').html(window.sessionStorage.getItem('crossword'));
+      window.location.hash = 'crosswords';
       return;
     }
-    var cells = JSON.parse(window.localStorage.getItem('cells'))[lang];   /* Get the value of all crossword cells */
-    var quests = JSON.parse(window.localStorage.getItem('quest'))[lang];   /* Get the value of all crossword hints */
-    var cells_str = "<h2>Crossword Puzzles</h2>";
-    for (var table = 0; table < cells.length; table++) {               /* Construct as many tables as the cells array has elements */
-      cells_str += `<table class="table"><caption>Q${table + 1}: ${quests[table]}</caption><tr>`;
-      for (var cell = 1; cell < 101; cell++) {                         /* Iterate through all 100 cells of a table per table */
-        do {
-          cells_str += get_cell(cells[table][cell]);                  /* Fill the cell if that cell number has content */
-          cell++;                                                       /* or add a non-breaking space if it does not */
-        } while ((cell % 10) != 0)                                     /* Break the 2nd iterating loop if the elements */
-        cells_str += `${get_cell(cells[table][cell])}</tr>`;           /* reach a number divisible by 10 (10/20 etc.) */
-      }
-      cells_str += '</table>';
-    }
-    $('#table-wrapper').html(cells_str);
-    window.sessionStorage.setItem('crossword', cells_str);
+    push_crosswords();
   });
 
   $("#confidants-list").on("click", '.sidebar', function() {    /* On click listener for the confidants-list div */

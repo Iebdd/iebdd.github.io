@@ -172,6 +172,7 @@ body {
     margin: 35px;
     font-size: 11px;
     color: #ffffff;
+    text-transform: capitalize;
 }
 
 .text-block {
@@ -359,6 +360,7 @@ canvas {
 
     .main-text {
         font-size: 6vw;
+        text-transform: capitalize;
     }
 
     #table-wrapper {
