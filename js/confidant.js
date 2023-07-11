@@ -37,6 +37,9 @@ function load_data() {
       if (window.localStorage.getItem('names') != JSON.stringify(data.names)) {
         window.localStorage.setItem('names', JSON.stringify(data.names));
       }
+      if (window.localStorage.getItem('exams') != JSON.stringify(data.exams)) {
+        window.localStorage.setItem('exams', JSON.stringify(data.exams));
+      }
       fill_main();
     },
     error: function (jqXhr, textStatus, errorMessage) {
@@ -69,15 +72,9 @@ function fill_main() {
   return;
 }
 
-function fill_cell(cell) {
-  let cell_str = '';
-  if (  cell in window ) {                 /* 'x in window' returns true if x is undefined and false if it is not */
-    cell_str = `<td class="cross_cell">&nbsp</td>`;
-  }
-  else {
-    cell_str = `<td class="cross_cell">${cell}</td>`;
-  }
-  return cell_str;
+function get_cell(cell) {
+  /* The dict call passed to the function will return undefined if the object does not exist and the object if it does */
+  return (cell === undefined) ? `<td class="cross_cell">&nbsp</td>` : `<td class="cross_cell">${cell}</td>`;
 }
 
 function capitalise(string) {
@@ -129,6 +126,60 @@ function push_confidant(id) {
     window.sessionStorage.setItem(id, table_str);
 }
 
+function get_date(date, exams) {
+  return (date === undefined) ? [exams, true] : [date, false];
+}
+
+function get_rows(answers) {
+  return (Array.isArray(answers[0])) ? Math.max(...answers.map(element => element.length)) : answers.length;
+}
+
+function collapse_overflow() {
+  $("#confidants-list").removeClass('overflow');            /* Collapse the confidant submenu if it is open */
+  $("#confidants-list").html('');
+  nav = false;
+  return;
+}
+
+
+function push_exams() {
+  let lang = window.localStorage.getItem('lang');
+  var response = [];
+  var answers = [];
+  var rows = 0;
+  var correct = ['', ''];
+  var exams = JSON.parse(window.localStorage.getItem('exams'));    /* Load the relevant items from storage based on the id */
+  var dates = exams.dates;
+  var exam_str = `<h2>Class and Exam Questions</h2>`;                           /* String to be written to with added preamble*/ 
+  for (let x = 0; x < dates.length; x++) {
+    response = get_date(exams.class_questions[lang][0][dates[x]], exams.exam_questions[lang][0][dates[x]]);
+    answers = get_date(exams.class_answers[lang][0][dates[x]], exams.exam_answers[lang][0][dates[x]])[0];
+    rows = get_rows(answers);
+    exam_str += `<table class="table con"><caption>${dates[x]}`;
+    if (response[1] && exams.exam_names[dates[x]] !== undefined) { 
+      exam_str += `<br /> ` + exams.exam_names[dates[x]] + '</caption>';
+    }
+    for (let y = 0; y < response[0].length; y++) {
+      exam_str += `<tr><th class="exam" colspan="${rows}">${response[0][y]}</th></tr><tbody><tr>`;
+        if (!Array.isArray(answers[0])) {
+          for (let z = 0; z < answers.length; z++) {
+            correct = (exams.key[0][x] == z) ? ['<span style="color: red">', '</span>'] : ['', ''];
+            exam_str += `<td class="exam">${correct[0]}${answers[z]}${correct[1]}</td>`;
+          }
+        }
+        else {
+          for (let z = 0; z < answers[y].length; z++) {
+            correct = (exams.key[0][x][y] == z) ? ['<span style="color: red">', '</span>'] : ['', ''];
+            exam_str += `<td class="exam">${correct[0]}${answers[y][z]}${correct[1]}</td>`
+          }
+        }
+      exam_str += `</tr></tbody>`;
+    }
+  }
+  $('#table-wrapper').html(exam_str);
+  window.sessionStorage.setItem('questions', exam_str);
+}
+
 $(function() {
   $("#open-button").click(function() {  /* Add or remove the class showing the menu */
     if ( isOpen ) {
@@ -142,7 +193,7 @@ $(function() {
     isOpen = !isOpen;                   /* Negates variable after opening/closing menu */
   });
 
-  $("#confidants").click(function() {
+  $("#confidants").click(function() {                                 /* Open and close the sub-menu showing confidant names */
     var names = JSON.parse(window.localStorage.getItem('names'));         /* Load the relevant names */
     names = names[window.localStorage.getItem('lang')];
     let menu_top_arr = [];
@@ -160,10 +211,17 @@ $(function() {
     nav = !nav;                                                           /* an empty string or the submenu */
   })
 
-  $("#crosswords").click(function() {
-    $("#confidants-list").removeClass('overflow');            /* Collapse the confidant submenu if it is open */
-    $("#confidants-list").html('');
-    nav = false;
+  $("#questions").click(function() {
+    collapse_overflow();
+    if ( window.sessionStorage.getItem('questions') ) {         /* Only construct the table anew if it has not been saved this session */
+      $('#table-wrapper').html(window.sessionStorage.getItem('questions'));
+      return;
+    }
+    push_exams();
+  });
+
+  $("#crosswords").click(function() {                           /* Change main view to crosswords */
+    collapse_overflow();
     let lang = window.localStorage.getItem('lang');
     if ( window.sessionStorage.getItem('crossword') ) {         /* Only construct the table anew if it has not been saved this session */
       $('#table-wrapper').html(window.sessionStorage.getItem('crossword'));
@@ -176,10 +234,10 @@ $(function() {
       cells_str += `<table class="table"><caption>Q${table + 1}: ${quests[table]}</caption><tr>`;
       for (var cell = 1; cell < 101; cell++) {                         /* Iterate through all 100 cells of a table per table */
         do {
-          cells_str += fill_cell(cells[table][cell]);                  /* Fill the cell if that cell number has content */
+          cells_str += get_cell(cells[table][cell]);                  /* Fill the cell if that cell number has content */
           cell++;                                                       /* or add a non-breaking space if it does not */
         } while ((cell % 10) != 0)                                     /* Break the 2nd iterating loop if the elements */
-        cells_str += `${fill_cell(cells[table][cell])}</tr>`;           /* reach a number divisible by 10 (10/20 etc.) */
+        cells_str += `${get_cell(cells[table][cell])}</tr>`;           /* reach a number divisible by 10 (10/20 etc.) */
       }
       cells_str += '</table>';
     }
@@ -188,9 +246,7 @@ $(function() {
   });
 
   $("#confidants-list").on("click", '.sidebar', function() {    /* On click listener for the confidants-list div */
-    $("#confidants-list").removeClass('overflow');            /* Collapse the confidant submenu if it is open */
-    $("#confidants-list").html('');
-    nav = false;
+    collapse_overflow();
     var id = $(this).attr('id');                                /* Get id of the button to figure out which one was pressed */
     push_confidant(id);
   });
