@@ -5,8 +5,7 @@ html {
 
 body {
   width: 100%;
-  min-width: 1150px;
-    height: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: Verdana;
@@ -14,29 +13,32 @@ body {
 
 
 h1 {
-  font-size: 40px;
+  font-size: 4vw;
   text-align: center;
   position:  relative;
+  margin-left: 20vw;
+  margin-right: 20vw;
+  margin-top: 5vh;
 }
 
 button, select {
   display:inline-block;
   padding:0.35em 1.2em;
-  border:0.1em solid #000000;
+  border:0.1em solid #000;
   margin:0 0.3em 0.3em 0;
   border-radius:0.12em;
   box-sizing: border-box;
   text-decoration:none;
   font-family:'Roboto',sans-serif;
   font-weight:300;
-  color:#333333;
+  color:#333;
   text-align:center;
   transition: all 0.2s;
 }
 
 button:hover, select:hover {
-  color:#000000;
-  background-color:#FFFFFF;
+  color:#000;
+  background-color:#FFF;
 }
 @media all and (max-width:30em){
   button, select{
@@ -44,6 +46,29 @@ button:hover, select:hover {
     margin:0.4em auto;
   }
 } 
+
+.flex-container {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  max-width: 80vw;
+  flex: 1;
+  justify-content: space-between;
+  padding: 1em;
+  gap: 2vh 3vw;
+  margin: 0;
+  list-style: none;
+}
+
+.flex-item {
+  text-transform: capitalize;
+  background: transparent;
+  max-width: 80vw;
+  height: 5vh;
+  margin-top: 10px;
+  color: #000;
+  text-align: center;
+}
 
 ul {
     -moz-column-count: 4;
@@ -54,13 +79,10 @@ ul {
     column-gap: 40px;
 }
 
-.flex-wrapper {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
-  margin: 10px 0 5px 0;
+#table-wrapper {
+  width: 70vw;
+  min-height: 80vh;
+  margin: 0 auto;
 }
 
 .footer {
@@ -114,85 +136,113 @@ body.mobile #dark-mode-switch {
 
 /** Dark Mode **/
 
-body.dark {
-  background-color:  #333333;
-}
+  body.dark {
+    background-color:  #333333;
+  }
 
-body.dark #mode-text {
-  color:#bbbbbb;
-}
+  body.dark #mode-text {
+    color:#bbbbbb;
+  }
 
-body.dark #Sorting {
-  color:#bbbbbb;
-}
+  body.dark #Sorting {
+    color:#bbbbbb;
+  }
 
-body.dark input, body.dark select, body.dark button  {
-  background: #181818;
-  border: 1px solid #121212;
-  color: #bbbbbb;
-}
+  body.dark input, body.dark select, body.dark button  {
+    background: #181818;
+    border: 1px solid #121212;
+    color: #bbbbbb;
+  }
 
-body.dark button:hover, body.dark select:hover {
-  cursor: pointer;
-  background-color: #000000;
-}
+  body.dark button:hover, body.dark select:hover {
+    cursor: pointer;
+    background-color: #000000;
+  }
 
-body.dark input[type="checkbox"], body.dark input[type="radio"] {
-  filter:  invert(100%) hue-rotate(180deg);
-}
+  body.dark input[type="checkbox"], body.dark input[type="radio"] {
+    filter:  invert(100%) hue-rotate(180deg);
+  }
 
-body.dark textarea {
-  background-color:#121212;
-  color: #bbb;
-}
+  body.dark textarea {
+    background-color:#121212;
+    color: #bbb;
+  }
 
-body.dark a:visited {
-  color: DarkSlateBlue;
-}
+  body.dark a:visited {
+    color: DarkSlateBlue;
+  }
 
-body.dark a:visited {
-  color: DarkSlateBlue;
-}
+  body.dark a:visited {
+    color: DarkSlateBlue;
+  }
 
-body.dark .title-category {
-  color: #ccc;
-}
+  body.dark .title-category {
+    color: #ccc;
+  }
 
-body.dark .title-category:after {
-  background-color: #ccc;
-}
+  body.dark .title-category:after {
+    background-color: #ccc;
+  }
 
-body.dark h1 {
-  color: #bbbbbb;
-}
+  body.dark h1 {
+    color: #bbbbbb;
+  }
 
-body.dark #flex-wrapper {
-  color: #bbbbbb;
-}
+  body.dark #flex-wrapper {
+    color: #bbbbbb;
+  }
 
-body.dark #New_Spells {
-  color: #bbbbbb;
-}
+  body.dark #New_Spells {
+    color: #bbbbbb;
+  }
 
-body.dark #footer {
-  color: #bbbbbb;
-}
+  body.dark #footer {
+    color: #bbbbbb;
+  }
+
+  body.dark .flex-item {
+    color: #bbb;
+  }
+  
+  body.dark footer {
+    color: #bbb;
+  }
 
 /** Dark Mode **/
 
-#footer {
-  text-align: center;
-  font-size: 0.6em;
-  margin: 10px 0 5px 0;
+.footer {
+  width: 100%;
 }
 
-#footer p {
-  margin: 0;
+footer {
+position: relative;
+color: #000;
+text-align: center;
+font-size: 1em;
+left: 0;
+bottom: 0;
+right: 0;
+height: 25px;
+margin: 20px;
+width: 95%;
+bottom: 0;
 }
+
+footer p {
+margin: 0;
+}
+
+/** Info Box **/
+
+#info-icon {
+  position: relative;
+  right: 6vw;
+  bottom: 8vh;
+}
+
+/** Info Box **/
 
 /** Slider **/
-
-
 
 
 #dark-mode-switch {
@@ -222,7 +272,7 @@ body.dark #footer {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #bbb;
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 20px;

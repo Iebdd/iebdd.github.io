@@ -10,37 +10,45 @@
   </head>
 
   <body>
+    <h1>Grammarian Dictionary</h1>
     <div>
-      <h1>Grammarian Dictionary</h1>
-      <div>
       <section id="dark-mode-switch">
         <label class="switch">
           <input type="checkbox">
           <span class="slider round"></span>
         </label>
         <div id="mode-text">Light mode</div>
+        <svg id="info-icon" width="7vw" height="7vh" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <g id="icons_Q2" data-name="icons Q2">
+            <path d="M24,2A22,22,0,1,0,46,24,21.9,21.9,0,0,0,24,2Zm0,40A18,18,0,1,1,42,24,18.1,18.1,0,0,1,24,42Z"/>
+            <path d="M24,20a2,2,0,0,0-2,2V34a2,2,0,0,0,4,0V22A2,2,0,0,0,24,20Z"/>
+            <circle cx="24" cy="14" r="2"/>
+          </g>
+        </svg>
       </section>
       </div>
     </div>
-    <section>
-      <div style="display: flex; flex-direction: row; justify-content: center; align-items: center" id="Sorting">Sort List:
-        <button type="button" id="Alphabetical">Alphabetically</button>
-        <button type="button" id="Spell_Level" >By Spell Level</button>
-      </div>
-      <div style="display: flex; flex-direction: row; justify-content: center; align-items: center" id="Sorting">
-        <select id="Spell" type="button">
-          <option value="">Loading...</option>
-        </select>
-        <button id="btn" type="button">Confirm</button>
-      </div>
-    </section>
-    <div class="flex-wrapper">
+      <section>
+        <div style="display: flex; flex-direction: row; justify-content: center; align-items: center" id="Sorting">Sort List:
+          <button type="button" id="Alphabetical">Alphabetically</button>
+          <button type="button" id="Spell_Level" >By Spell Level</button>
+        </div>
+        <div style="display: flex; flex-direction: row; justify-content: center; align-items: center" id="Sorting">
+          <select id="Spell" type="button">
+            <option value="">Loading...</option>
+          </select>
+          <button id="btn" type="button">Confirm</button>
+        </div>
+      </section>
+    <div class="table-wrapper">
       <div style="display: flex; flex-direction: row; justify-content: center; align-items: center" id="New_Spells">
 
       </div>
 
-      <div id="footer">
-      <p>Dungeons & Dragons is a registered trademark of Wizards of the Coast LLC. 1993 - 2022 , a subsidiary of Hasbro, Inc. All Rights Reserved. <br> Want to contact me to report a problem, for a suggestion or for any good other reason? You can do this via <i> grammarian43@icloud.com</i></p>
+      <div class="footer" id="footer-wrap">
+        <footer>
+          <p>Dungeons & Dragons is a registered trademark of Wizards of the Coast LLC. 1993 - 2022 , a subsidiary of Hasbro, Inc. All Rights Reserved. <br> Want to contact me to report a problem, for a suggestion or for any good other reason? You can do this via <i> grammarian43@icloud.com</i></p>
+        </footer>
       </div>
     </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -48,3 +56,4 @@
     </body>
 
 </html>
+

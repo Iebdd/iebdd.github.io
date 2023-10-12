@@ -1,6 +1,5 @@
 $(document).ready(function(){
-  isOpen = false;
-  nav = false;
+  nav = true;
   langs = ['en'];
   if (window.localStorage.getItem('lang') === null) {
     window.localStorage.setItem('lang', 0);
@@ -10,7 +9,7 @@ $(document).ready(function(){
 
 
 function load_data() {
-  $.ajax('js/confidant.json', { /* Load data from confidant.json file on load */
+  $.ajax('js/confidant5.json', { /* Load data from confidant.json file on load */
     dataType: 'json',
     timeout: 2000,
     success: function (data, status, xhr) {
@@ -250,7 +249,6 @@ $(function() {
   })
 
   $("#questions").click(function() {
-    collapse_overflow();
     if ( window.sessionStorage.getItem('questions') ) {         /* Only construct the table anew if it has not been saved this session */
       $('#table-wrapper').html(window.sessionStorage.getItem('questions'));
       window.location.hash = 'exams';
@@ -260,7 +258,6 @@ $(function() {
   });
 
   $("#crosswords").click(function() {                           /* Change main view to crosswords */
-    collapse_overflow();
     if ( window.sessionStorage.getItem('crossword') ) {         /* Only construct the table anew if it has not been saved this session */
       $('#table-wrapper').html(window.sessionStorage.getItem('crossword'));
       window.location.hash = 'crosswords';
@@ -270,7 +267,6 @@ $(function() {
   });
 
   $("#confidants-list").on("click", '.sidebar', function() {    /* On click listener for the confidants-list div */
-    collapse_overflow();
     var id = $(this).attr('id');                                /* Get id of the button to figure out which one was pressed */
     push_confidant(id);
   });
@@ -286,4 +282,3 @@ $(function() {
 
 
 });
-

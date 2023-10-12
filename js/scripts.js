@@ -8,15 +8,7 @@ $(document).ready(function(){
 });
 
 function is_mobile() {
-    var width = window.screen.width;
-    var height = window.screen.height;
-    var ratio = width / height;          
-    if (ratio < 1) {                    /* Assume a mobile browser when the screen is higher than it is wide */
-        return true;
-    }
-    else {
-        return false;
-    }
+    return ((window.screen.width / window.screen.height) < 1) ? true : false;
 };
 
 function load_data() {
@@ -70,8 +62,6 @@ function set_spell_level() {
         var list = '';
         var spells = localStorage.getItem('spells').split(',');
         var level = localStorage.getItem('spell_level').split(',');
-        var length = spells.length;
-        var cur_level = 1;
         list = components[0] + 'Cantrips:' + components[3] + components[1] + 'Cantrips:' + components[2];      /* Append Cantrip menu */
         list += build_menu(spells.filter((element, index) => {return level[index] == 0}), components);    /*  and Cantrip spells */
         for (let x = 1; x < 10; x++) {
@@ -93,7 +83,7 @@ $(function() {
         var keywords = new Array;
         var new_spells = new Array;
         var buffer = new Array;
-        var list = '<ul>\n   '
+        var list = '<ul class="flex-container">\n   '
         var variations = JSON.parse(localStorage.getItem('variations'));    /* Extract dict from localStorage and parse to JSON */
         for (let i = 0; i < spell.length; i++) {                /* Iterate over the amount of words in the chosen spell */
             keywords.push(variations[spell[i]]);                /* Construct an array consisting of available variations of the spell components */
@@ -110,14 +100,14 @@ $(function() {
             buffer = [];                                        /* Empty the buffer by assigning it to a new dynamic space without deleting the previous ones */
         }
         for (let i = 0; i < new_spells[0].length; i++) {        /* Iterate over the amount of available variations. Since all array arrays should be the same length any of the elements can be chosen */
-            list += '<li>';
+            list += '<li class="flex-item">';
             for (let x = 0; x < new_spells.length; x++) {       /* Iterate over the amount of keywords */
-            if (spell.includes(new_spells[x][i])) {             /* If the current variation element is an original spell component, print in black */
-                list += new_spells[x][i] + ' ';
-            }
-            else {
-                list += '<span style="color: red">' + new_spells[x][i] + '</span>' + ' ';   /* Else print in red */
-            }
+                if (spell.includes(new_spells[x][i])) {             /* If the current variation element is an original spell component, print in black */
+                    list += new_spells[x][i] + ' ';
+                }
+                else {
+                    list += '<span style="color: red">' + new_spells[x][i] + '</span>' + ' ';   /* Else print in red */
+                }
             }
             list = list.slice(0, -1) + '</li>';                 /* Copy the list to itself without the last element and the list item end tag */
         }
